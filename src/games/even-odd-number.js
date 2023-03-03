@@ -1,23 +1,21 @@
+import { EVEN_GAME_POSSIBLE_USER_ANSWERS } from '../constants.js';
+
 export default class EvenOddNumber {
     #number;
 
     #numberOddEvenProperty;
 
-    constructor() {
-        this.setNumber(this.generateRandomNumber());
+    constructor(number) {
+        this.setNumber(number);
         this.setNumberOddEvenProperty(this.getOddEvenOfNumber(this.#number));
     }
 
     getOddEvenOfNumber(number) {
         if (number % 2 === 0) {
-            return 'even';
+            return EVEN_GAME_POSSIBLE_USER_ANSWERS.YES;
         }
 
-        return 'odd';
-    }
-
-    generateRandomNumber() {
-        return Math.floor(Math.random() * 100);
+        return EVEN_GAME_POSSIBLE_USER_ANSWERS.NO;
     }
 
     setNumber(number) {
