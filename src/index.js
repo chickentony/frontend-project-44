@@ -7,6 +7,8 @@ import {
     username
 } from './helpers.js';
 import Calculator from './games/calculator.js';
+import {GreatestCommonDivisor} from "./games/greatest-common-divisor.js";
+import ArithmeticProgression from "./games/arithmetic progression.js";
 
 function generateWrongAnswerMessage(answer, correctAnswer) {
     const looseMessage = `Let's try again, ${username}!`;
@@ -51,6 +53,48 @@ export function calculatorGameLogic() {
             counter += 1;
         } else {
             console.log(generateWrongAnswerMessage(answer, calculatedResult));
+            counter = 0;
+            break;
+        }
+
+        congratulateUserIfHeWin(counter, username);
+    }
+}
+
+export function gcdGameLogic() {
+    let counter = 0;
+
+    while (counter < WINING_NUMBER_0F_CORRECT_ANSWERS) {
+        const gcd = new GreatestCommonDivisor(generateRandomNumber(), generateRandomNumber());
+        const calculatedResult = gcd.calculateResult();
+        const answer = askUserAQuestion(`${gcd.getFirstNum()} ${gcd.getSecondNum()}`);
+
+        if (parseInt(answer) === calculatedResult) {
+            console.log('Correct!');
+            counter += 1;
+        } else {
+            console.log(generateWrongAnswerMessage(answer, calculatedResult));
+            counter = 0;
+            break;
+        }
+
+        congratulateUserIfHeWin(counter, username);
+    }
+}
+
+export function progressionGameLogic() {
+    let counter = 0;
+
+    while (counter < WINING_NUMBER_0F_CORRECT_ANSWERS) {
+        const progression = new ArithmeticProgression();
+        progression.generateProgression();
+        const answer = askUserAQuestion(`${progression.getProgression()}`);
+
+        if (parseInt(answer) === progression.getMissingNumberOfProgression()) {
+            console.log('Correct!');
+            counter += 1;
+        } else {
+            console.log(generateWrongAnswerMessage(answer, progression.getMissingNumberOfProgression()));
             counter = 0;
             break;
         }

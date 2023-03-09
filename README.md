@@ -4,3 +4,7 @@
 
 ### Brain even game example:
 https://asciinema.org/a/e0VaxdPIJYm4PgpBMApsrNRXq
+
+
+### Brain calc game example:
+https://asciinema.org/a/g9qy9ua0ucxJGK0B9BlGCEIeU
