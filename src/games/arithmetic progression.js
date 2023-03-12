@@ -1,3 +1,5 @@
+import { generateRandomNumber } from '../helpers.js';
+
 export default class ArithmeticProgression {
     progression = [];
 
@@ -19,16 +21,12 @@ export default class ArithmeticProgression {
         this.missingNumberOfProgression = number;
     }
 
-    getRandomArbitrary(min, max) {
-        return Math.floor(Math.random() * (max - min) + min);
-    }
-
     addValueToProgression(value) {
         this.progression.push(value);
     }
 
-    getProgression() {
-        return this.progression;
+    getProgressionInStringRepresentation() {
+        return this.progression.join(' ');
     }
 
     getMissingNumberOfProgression() {
@@ -42,12 +40,12 @@ export default class ArithmeticProgression {
 
     generateFirstNumberForProgression() {
         while (this.firstNumberOfProgression === 0) {
-            this.setFirstNumberOfProgression(Math.floor(Math.random() * 90));
+            this.setFirstNumberOfProgression(generateRandomNumber());
         }
     }
 
     generateSecondNumberForProgression() {
-        this.setSecondNumberForProgression(this.getRandomArbitrary(this.firstNumberOfProgression, 90));
+        this.setSecondNumberForProgression(generateRandomNumber(this.firstNumberOfProgression, 100));
     }
 
     hideRandomElementOfProgression() {

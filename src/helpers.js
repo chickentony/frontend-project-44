@@ -14,8 +14,13 @@ export function welcomeMessage() {
     console.log(`Hello ${username}`);
 }
 
-export function generateRandomNumber() {
-    return Math.floor(Math.random() * 100);
+export function generateRandomNumber(minValueOfGeneratedNumber = 0, maxValueOfGeneratedNumber = 100) {
+    if (maxValueOfGeneratedNumber < minValueOfGeneratedNumber) {
+        throw new Error('Max value of number can not be less than min value');
+    }
+    return Math.floor(
+        Math.random() * (maxValueOfGeneratedNumber - minValueOfGeneratedNumber) + minValueOfGeneratedNumber
+    );
 }
 
 export function generateRandomMathSign() {

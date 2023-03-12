@@ -7,8 +7,9 @@ import {
     username
 } from './helpers.js';
 import Calculator from './games/calculator.js';
-import {GreatestCommonDivisor} from "./games/greatest-common-divisor.js";
-import ArithmeticProgression from "./games/arithmetic progression.js";
+import { GreatestCommonDivisor } from './games/greatest-common-divisor.js';
+import ArithmeticProgression from './games/arithmetic progression.js';
+import PrimeNumber from "./games/prime-number.js";
 
 function generateWrongAnswerMessage(answer, correctAnswer) {
     const looseMessage = `Let's try again, ${username}!`;
@@ -21,13 +22,12 @@ export function evenGameLogic() {
     while (counter < WINING_NUMBER_0F_CORRECT_ANSWERS) {
         const evenOddNumber = new EvenOddNumber(generateRandomNumber());
         const userAnswer = askUserAQuestion(evenOddNumber.getNumber());
-        const correctAnswer = evenOddNumber.getNumberOddEvenProperty();
 
-        if (userAnswer === correctAnswer) {
+        if (userAnswer === evenOddNumber.getIsNumberEven()) {
             console.log('Correct!');
             counter += 1;
         } else {
-            console.log(generateWrongAnswerMessage(userAnswer, correctAnswer));
+            console.log(generateWrongAnswerMessage(userAnswer, evenOddNumber.getIsNumberEven()));
             counter = 0;
             break;
         }
@@ -88,13 +88,33 @@ export function progressionGameLogic() {
     while (counter < WINING_NUMBER_0F_CORRECT_ANSWERS) {
         const progression = new ArithmeticProgression();
         progression.generateProgression();
-        const answer = askUserAQuestion(`${progression.getProgression()}`);
+        const answer = askUserAQuestion(`${progression.getProgressionInStringRepresentation()}`);
 
         if (parseInt(answer) === progression.getMissingNumberOfProgression()) {
             console.log('Correct!');
             counter += 1;
         } else {
             console.log(generateWrongAnswerMessage(answer, progression.getMissingNumberOfProgression()));
+            counter = 0;
+            break;
+        }
+
+        congratulateUserIfHeWin(counter, username);
+    }
+}
+
+export function primeGameLogic() {
+    let counter = 0;
+
+    while (counter < WINING_NUMBER_0F_CORRECT_ANSWERS) {
+        const primeNumber = new PrimeNumber(generateRandomNumber());
+        const answer = askUserAQuestion(`${primeNumber.getNumber()}`);
+
+        if (answer === primeNumber.getIsNumberPrime()) {
+            console.log('Correct!');
+            counter += 1;
+        } else {
+            console.log(generateWrongAnswerMessage(answer, primeNumber.getIsNumberPrime()));
             counter = 0;
             break;
         }
