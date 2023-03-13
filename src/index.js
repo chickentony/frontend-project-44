@@ -1,20 +1,17 @@
 import EvenOddNumber from './games/even-odd-number.js';
-import { WINING_NUMBER_0F_CORRECT_ANSWERS } from './constants.js';
+import { RADIX, WINING_NUMBER_0F_CORRECT_ANSWERS } from './constants.js';
 import {
-    askUserAQuestion, congratulateUserIfHeWin,
+    askUserAQuestion,
+    congratulateUserIfHeWin,
     generateRandomMathSign,
     generateRandomNumber,
-    username
+    generateWrongAnswerMessage,
+    user,
 } from './helpers.js';
 import Calculator from './games/calculator.js';
-import { GreatestCommonDivisor } from './games/greatest-common-divisor.js';
+import GreatestCommonDivisor from './games/greatest-common-divisor.js';
 import ArithmeticProgression from './games/arithmetic progression.js';
-import PrimeNumber from "./games/prime-number.js";
-
-function generateWrongAnswerMessage(answer, correctAnswer) {
-    const looseMessage = `Let's try again, ${username}!`;
-    return `'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n${looseMessage}`;
-}
+import PrimeNumber from './games/prime-number.js';
 
 export function evenGameLogic() {
     let counter = 0;
@@ -33,7 +30,7 @@ export function evenGameLogic() {
         }
     }
 
-    congratulateUserIfHeWin(counter, username);
+    congratulateUserIfHeWin(counter, user.getUsername());
 }
 
 export function calculatorGameLogic() {
@@ -48,7 +45,7 @@ export function calculatorGameLogic() {
         const calculatedResult = calculator.calculateResult();
         const answer = askUserAQuestion(calculator.generateStringMathOperation());
 
-        if (parseInt(answer) === calculatedResult) {
+        if (parseInt(answer, RADIX) === calculatedResult) {
             console.log('Correct!');
             counter += 1;
         } else {
@@ -57,7 +54,7 @@ export function calculatorGameLogic() {
             break;
         }
 
-        congratulateUserIfHeWin(counter, username);
+        congratulateUserIfHeWin(counter, user.getUsername());
     }
 }
 
@@ -69,7 +66,7 @@ export function gcdGameLogic() {
         const calculatedResult = gcd.calculateResult();
         const answer = askUserAQuestion(`${gcd.getFirstNum()} ${gcd.getSecondNum()}`);
 
-        if (parseInt(answer) === calculatedResult) {
+        if (parseInt(answer, RADIX) === calculatedResult) {
             console.log('Correct!');
             counter += 1;
         } else {
@@ -78,7 +75,7 @@ export function gcdGameLogic() {
             break;
         }
 
-        congratulateUserIfHeWin(counter, username);
+        congratulateUserIfHeWin(counter, user.getUsername());
     }
 }
 
@@ -90,16 +87,18 @@ export function progressionGameLogic() {
         progression.generateProgression();
         const answer = askUserAQuestion(`${progression.getProgressionInStringRepresentation()}`);
 
-        if (parseInt(answer) === progression.getMissingNumberOfProgression()) {
+        if (parseInt(answer, RADIX) === progression.getMissingNumberOfProgression()) {
             console.log('Correct!');
             counter += 1;
         } else {
-            console.log(generateWrongAnswerMessage(answer, progression.getMissingNumberOfProgression()));
+            console.log(
+                generateWrongAnswerMessage(answer, progression.getMissingNumberOfProgression())
+            );
             counter = 0;
             break;
         }
 
-        congratulateUserIfHeWin(counter, username);
+        congratulateUserIfHeWin(counter, user.getUsername());
     }
 }
 
@@ -119,6 +118,6 @@ export function primeGameLogic() {
             break;
         }
 
-        congratulateUserIfHeWin(counter, username);
+        congratulateUserIfHeWin(counter, user.getUsername());
     }
 }

@@ -1,9 +1,13 @@
-export class GreatestCommonDivisor {
+export default class GreatestCommonDivisor {
     firstNum;
 
     secondNum;
 
     constructor(firstNum, secondNum) {
+        if (!(firstNum instanceof Number) || !(secondNum instanceof Number)) {
+            throw new Error('First and second values must be a number');
+        }
+
         this.firstNum = firstNum;
         this.secondNum = secondNum;
     }
@@ -13,7 +17,7 @@ export class GreatestCommonDivisor {
         let y = Math.abs(this.secondNum);
 
         while (y) {
-            let c = y;
+            const c = y;
             y = x % y;
             x = c;
         }

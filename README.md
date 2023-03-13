@@ -5,6 +5,15 @@
 ### Brain even game example:
 https://asciinema.org/a/e0VaxdPIJYm4PgpBMApsrNRXq
 
-
 ### Brain calc game example:
 https://asciinema.org/a/g9qy9ua0ucxJGK0B9BlGCEIeU
+
+### Brain greatest common divisor example:
+https://asciinema.org/a/wdu1XmTqRQQ79iPxCn9k6Jhbw
+
+### Brain arithmetic progression example:
+https://asciinema.org/a/M2l6cSSM9gU5zbxXGF44qQhe8
+
+### Brain prime number example:
+https://asciinema.org/a/vHTHjs7lIbAkonrqBHYSZlBky
+

@@ -1,4 +1,4 @@
-import { YES_OR_NO, PRIME_NUMBERS_BEFORE_100 } from "../constants.js";
+import { YES_OR_NO, PRIME_NUMBERS_BEFORE_100 } from '../constants.js';
 
 export default class PrimeNumber {
     number;
@@ -6,6 +6,10 @@ export default class PrimeNumber {
     isNumberPrime;
 
     constructor(number) {
+        if (!(number instanceof Number)) {
+            throw new Error('Argument must be number type');
+        }
+
         this.number = number;
         this.checkIfNumberIsPrime();
     }

@@ -6,6 +6,10 @@ export default class Calculator {
     sign;
 
     constructor(firstNum, secondNum, sign) {
+        if (!(firstNum instanceof Number) || !(secondNum instanceof Number)) {
+            throw new Error('First and second values must be a number');
+        }
+
         this.firstNum = firstNum;
         this.secondNum = secondNum;
         this.sign = sign;

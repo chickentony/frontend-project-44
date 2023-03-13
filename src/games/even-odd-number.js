@@ -6,6 +6,10 @@ export default class EvenOddNumber {
     isNumberEven;
 
     constructor(number) {
+        if (!(number instanceof Number)) {
+            throw new Error('Argument must be number type');
+        }
+
         this.number = number;
         this.checkIfNumberIsEven();
     }
@@ -23,6 +27,7 @@ export default class EvenOddNumber {
     }
 
     checkIfNumberIsEven() {
-        this.number % 2 === 0 ? this.setIsNumberEven(YES_OR_NO.YES) : this.setIsNumberEven(YES_OR_NO.NO);
+        this.number % 2 === 0 ? this.setIsNumberEven(YES_OR_NO.YES)
+            : this.setIsNumberEven(YES_OR_NO.NO);
     }
 }

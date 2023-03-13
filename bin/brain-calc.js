@@ -5,4 +5,4 @@ import { calculatorGameLogic } from '../src/index.js';
 
 welcomeMessage();
 console.log('What is the result of the expression?');
-calculatorGameLogic()
+calculatorGameLogic();

@@ -1,8 +1,10 @@
+import readlineSync from 'readline-sync';
 import getUsername from './cli.js';
 import { MATH_OPERATION, WINING_NUMBER_0F_CORRECT_ANSWERS } from './constants.js';
-import readlineSync from 'readline-sync';
+import User from './user.js';
 
-export let username = '';
+const user = new User();
+export { user };
 
 function congratulationMessage(username) {
     console.log(`Congratulations, ${username}`);
@@ -10,16 +12,23 @@ function congratulationMessage(username) {
 
 export function welcomeMessage() {
     console.log('Welcome to the Brain Games!');
-    username = getUsername();
-    console.log(`Hello ${username}`);
+    user.setUsername(getUsername());
+    console.log(`Hello ${user.getUsername()}`);
 }
 
-export function generateRandomNumber(minValueOfGeneratedNumber = 0, maxValueOfGeneratedNumber = 100) {
+export function generateRandomNumber(
+    minValueOfGeneratedNumber = 0,
+    maxValueOfGeneratedNumber = 100,
+) {
     if (maxValueOfGeneratedNumber < minValueOfGeneratedNumber) {
-        throw new Error('Max value of number can not be less than min value');
+        throw new Error(
+            'Max value of number can not be less than min value',
+        );
     }
     return Math.floor(
-        Math.random() * (maxValueOfGeneratedNumber - minValueOfGeneratedNumber) + minValueOfGeneratedNumber
+        Math.random()
+        * (maxValueOfGeneratedNumber - minValueOfGeneratedNumber)
+        + minValueOfGeneratedNumber
     );
 }
 
@@ -32,9 +41,18 @@ export function askUserAQuestion(questionCondition) {
 }
 
 export function congratulateUserIfHeWin(count, username) {
+    if (!(count instanceof Number)) {
+        throw new Error('Argument must be number type');
+    }
+
     if (count === WINING_NUMBER_0F_CORRECT_ANSWERS) {
         return congratulationMessage(username);
     }
 
     return '';
+}
+
+export function generateWrongAnswerMessage(answer, correctAnswer) {
+    const looseMessage = `Let's try again, ${user.getUsername()}!`;
+    return `'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n${looseMessage}`;
 }
