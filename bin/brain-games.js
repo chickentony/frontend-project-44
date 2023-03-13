@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
-import { welcomeMessage } from '../src/helpers.js';
+import getUsername from '../src/cli.js';
 
-welcomeMessage();
+console.log('Welcome to the Brain Games!');
+console.log(`Hello, ${getUsername()}`);
