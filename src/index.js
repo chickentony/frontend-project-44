@@ -1,6 +1,5 @@
 import {
     askUserAQuestion,
-    congratulationMessage,
     generateWrongAnswerMessage,
     welcomeMessage,
 } from './helpers.js';
@@ -26,5 +25,5 @@ export const mainGameLogic = (getQuestion, answerCheck, gameRuleMessage) => {
         }
     }
 
-    if (round) congratulationMessage(username)
+    if (round) console.log(`Congratulations, ${username}!`)
 }

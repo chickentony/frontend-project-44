@@ -2,10 +2,6 @@ import readlineSync from 'readline-sync';
 import getUsername from './cli.js';
 import { MATH_OPERATION, WINING_NUMBER_0F_CORRECT_ANSWERS } from './constants.js';
 
-export function congratulationMessage(username) {
-    console.log(`Congratulations, ${username}`);
-}
-
 export function welcomeMessage() {
     console.log('Welcome to the Brain Games!');
     const username = getUsername();
