@@ -9,7 +9,7 @@ export function congratulationMessage(username) {
 export function welcomeMessage() {
     console.log('Welcome to the Brain Games!');
     const username = getUsername();
-    console.log(`Hello ${username}`);
+    console.log(`Hello, ${username}`);
     return username;
 }
 
