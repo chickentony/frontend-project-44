@@ -1,8 +1,5 @@
 #!/usr/bin/env node
 
-import { welcomeMessage } from '../src/helpers.js';
-import { gcdGameLogic } from '../src/index.js';
+import {playGCDGame} from "../src/games/gcd-game.js";
 
-welcomeMessage();
-console.log('Find the greatest common divisor of given numbers.');
-gcdGameLogic();
+playGCDGame();

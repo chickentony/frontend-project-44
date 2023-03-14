@@ -1,8 +1,5 @@
 #!/usr/bin/env node
 
-import { evenGameLogic } from '../src/index.js';
-import { welcomeMessage } from '../src/helpers.js';
+import {playEvenGame} from "../src/games/even-game.js";
 
-welcomeMessage();
-console.log('Answer "yes" if the number is even, otherwise answer "no".');
-evenGameLogic();
+playEvenGame();
