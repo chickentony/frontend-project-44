@@ -1,13 +1,11 @@
-import {mainGameLogic} from "../index.js";
-import {generateRandomNumber} from "../helpers.js";
+import { mainGameLogic } from '../index.js';
+import { generateRandomNumber } from '../helpers.js';
 
-const gameRule = 'Find the greatest common divisor of given numbers.';
+const task = 'Find the greatest common divisor of given numbers.';
 
-const getGCD = (numberAsString) => {
-    console.log(numberAsString);
-    const numArr = numberAsString.split(' ');
-    let x = Math.abs(numArr[0]);
-    let y = Math.abs(numArr[1]);
+const getGCD = (firstNum, secondNum) => {
+    let x = Math.abs(firstNum);
+    let y = Math.abs(secondNum);
 
     while (y) {
         const c = y;
@@ -16,15 +14,17 @@ const getGCD = (numberAsString) => {
     }
 
     return String(x);
-}
+};
 
-const generateQuestionString = () => {
+const getArrWithQuestionAndAnswer = () => {
     const firstNum = generateRandomNumber();
     const secondNum = generateRandomNumber();
+    const correctAnswer = getGCD(firstNum, secondNum);
+    const question = `${firstNum} ${secondNum}`;
 
-    return `${firstNum} ${secondNum}`;
-}
+    return [question, correctAnswer];
+};
 
 export const playGCDGame = () => {
-    mainGameLogic(generateQuestionString, getGCD, gameRule);
-}
+    mainGameLogic(getArrWithQuestionAndAnswer, task);
+};

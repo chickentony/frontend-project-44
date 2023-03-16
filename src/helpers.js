@@ -1,6 +1,5 @@
 import readlineSync from 'readline-sync';
 import getUsername from './cli.js';
-import { MATH_OPERATION, WINING_NUMBER_0F_CORRECT_ANSWERS } from './constants.js';
 
 export function welcomeMessage() {
     console.log('Welcome to the Brain Games!');
@@ -21,12 +20,8 @@ export function generateRandomNumber(
     return Math.floor(
         Math.random()
         * (maxValueOfGeneratedNumber - minValueOfGeneratedNumber)
-        + minValueOfGeneratedNumber
+        + minValueOfGeneratedNumber,
     );
-}
-
-export function generateRandomMathSign() {
-    return MATH_OPERATION[Math.floor(Math.random() * MATH_OPERATION.length)];
 }
 
 export function askUserAQuestion(questionCondition) {
