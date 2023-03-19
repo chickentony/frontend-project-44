@@ -1,30 +1,32 @@
-import { mainGameLogic } from '../index.js';
+import mainGameLogic from '../index.js';
 import { generateRandomNumber } from '../helpers.js';
 
 const task = 'Find the greatest common divisor of given numbers.';
 
 const getGCD = (firstNum, secondNum) => {
-    let x = Math.abs(firstNum);
-    let y = Math.abs(secondNum);
+  let x = Math.abs(firstNum);
+  let y = Math.abs(secondNum);
 
-    while (y) {
-        const c = y;
-        y = x % y;
-        x = c;
-    }
+  while (y) {
+    const c = y;
+    y = x % y;
+    x = c;
+  }
 
-    return String(x);
+  return String(x);
 };
 
 const getArrWithQuestionAndAnswer = () => {
-    const firstNum = generateRandomNumber();
-    const secondNum = generateRandomNumber();
-    const correctAnswer = getGCD(firstNum, secondNum);
-    const question = `${firstNum} ${secondNum}`;
+  const firstNum = generateRandomNumber();
+  const secondNum = generateRandomNumber();
+  const correctAnswer = getGCD(firstNum, secondNum);
+  const question = `${firstNum} ${secondNum}`;
 
-    return [question, correctAnswer];
+  return [question, correctAnswer];
 };
 
-export const playGCDGame = () => {
-    mainGameLogic(getArrWithQuestionAndAnswer, task);
+const playGCDGame = () => {
+  mainGameLogic(getArrWithQuestionAndAnswer, task);
 };
+
+export default playGCDGame;
